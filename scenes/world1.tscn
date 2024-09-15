@@ -1,0 +1,105 @@
+[gd_scene load_steps=14 format=3 uid="uid://b767hrxd2mlhq"]
+
+[ext_resource type="PackedScene" uid="uid://c0y7cdb5ayp" path="res://scenes/fade_out_ui.tscn" id="1_5o6o4"]
+[ext_resource type="PackedScene" uid="uid://c8mfng67jl0eg" path="res://scenes/UI.tscn" id="2_meww0"]
+[ext_resource type="Texture2D" uid="uid://cgos62l8arft1" path="res://Assets/hdris/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="3_f1fdf"]
+[ext_resource type="PackedScene" uid="uid://ccly0qmqh0div" path="res://scenes/player.tscn" id="4_e77bq"]
+[ext_resource type="PackedScene" uid="uid://bxphua50opefc" path="res://scenes/bronze_coin.tscn" id="5_g1tdx"]
+[ext_resource type="PackedScene" uid="uid://dpqb7qetsl0eu" path="res://scenes/fence.tscn" id="6_s6s4f"]
+[ext_resource type="PackedScene" uid="uid://c6x1m1lrgksdt" path="res://scenes/block_large.tscn" id="7_glvq0"]
+[ext_resource type="PackedScene" uid="uid://n0am10fy187" path="res://scenes/block.tscn" id="8_uwv7j"]
+[ext_resource type="PackedScene" uid="uid://dbateyqq1do1k" path="res://scenes/death_box.tscn" id="9_ifq7m"]
+[ext_resource type="PackedScene" uid="uid://blmubuolo4lmj" path="res://scenes/gate.tscn" id="10_lxg2i"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_828j4"]
+panorama = ExtResource("3_f1fdf")
+
+[sub_resource type="Sky" id="Sky_y2u3d"]
+sky_material = SubResource("PanoramaSkyMaterial_828j4")
+
+[sub_resource type="Environment" id="Environment_8cxvw"]
+background_mode = 2
+sky = SubResource("Sky_y2u3d")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="world1" type="Node3D"]
+
+[node name="FadeOutUi" parent="." instance=ExtResource("1_5o6o4")]
+
+[node name="UI" parent="." instance=ExtResource("2_meww0")]
+
+[node name="env" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
+environment = SubResource("Environment_8cxvw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="player" parent="." instance=ExtResource("4_e77bq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.68465, 0)
+
+[node name="BronzeCoin" parent="." instance=ExtResource("5_g1tdx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.5, -9)
+
+[node name="BronzeCoin2" parent="." instance=ExtResource("5_g1tdx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.5, -13.5)
+
+[node name="BronzeCoin3" parent="." instance=ExtResource("5_g1tdx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.5, -18)
+
+[node name="stage" type="Node3D" parent="."]
+
+[node name="Fence" parent="stage" instance=ExtResource("6_s6s4f")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1, 2, 1)
+
+[node name="Fence2" parent="stage" instance=ExtResource("6_s6s4f")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1, 2, 1)
+
+[node name="Fence3" parent="stage" instance=ExtResource("6_s6s4f")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3, 2, 1)
+
+[node name="Fence4" parent="stage" instance=ExtResource("6_s6s4f")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5, 2, 1)
+
+[node name="BlockLarge5" parent="stage" instance=ExtResource("7_glvq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08165e-12, 0)
+
+[node name="BlockLarge7" parent="stage" instance=ExtResource("7_glvq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08165e-12, -4)
+
+[node name="BlockLarge8" parent="stage" instance=ExtResource("7_glvq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.08165e-12, -4)
+
+[node name="BlockLarge9" parent="stage" instance=ExtResource("7_glvq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -24)
+
+[node name="BlockLarge6" parent="stage" instance=ExtResource("7_glvq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.08165e-12, 0)
+
+[node name="Block" parent="stage" instance=ExtResource("8_uwv7j")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2, 1, -9)
+
+[node name="Block2" parent="stage" instance=ExtResource("8_uwv7j")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2, 1, -13.5)
+
+[node name="Block3" parent="stage" instance=ExtResource("8_uwv7j")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2, 1, -18)
+
+[node name="DeathBox" parent="." instance=ExtResource("9_ifq7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -4, 2.08165e-12)
+
+[node name="SpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7, 2.08165e-12)
+
+[node name="Gate" parent="." instance=ExtResource("10_lxg2i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.99615, -25)
+
+[connection signal="EndTransition" from="FadeOutUi" to="player" method="_on_fade_out_ui_end_transition"]
+[connection signal="TransitionedToBlack" from="FadeOutUi" to="player" method="_on_fade_out_ui_transitioned_to_black"]
+[connection signal="BronzeCoinTouch" from="BronzeCoin" to="UI" method="_on_bronze_coin_touch"]
+[connection signal="BronzeCoinTouch" from="BronzeCoin2" to="UI" method="_on_bronze_coin_touch"]
+[connection signal="BronzeCoinTouch" from="BronzeCoin3" to="UI" method="_on_bronze_coin_touch"]
+[connection signal="PlayerDeath" from="DeathBox" to="FadeOutUi" method="_on_death_box_player_death"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://n0am10fy187"]
+
+[ext_resource type="ArrayMesh" uid="uid://b7gj56nk7860" path="res://kenney_platformer-kit/Models/OBJ format/block.obj" id="1_oakyr"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ewlph"]
+points = PackedVector3Array(-0.416772, 0.769577, -0.633028, -0.500052, 0, -0.500052, -0.500052, 0.841425, -0.591636, 0.416648, 0.769577, -0.633028, -0.500052, 0, 0.499929, -0.633028, 0.769577, -0.416772, -0.591636, 0.841425, -0.500052, 0.499929, 0, -0.500052, -0.500052, 1, -0.500052, 0.499929, 0.841425, -0.591636, -0.416772, 0.769577, 0.632904, -0.500052, 0.841425, 0.591512, -0.591636, 0.841425, 0.499929, -0.633028, 0.769577, 0.416648, 0.499929, 0, 0.499929, 0.591512, 0.841425, -0.500052, 0.632904, 0.769577, -0.416772, -0.500052, 1, 0.499929, 0.499929, 1, -0.500052, 0.416648, 0.769577, 0.632904, 0.499929, 0.841425, 0.591512, 0.632904, 0.769577, 0.416648, 0.591512, 0.841425, 0.499929, 0.499929, 1, 0.499929)
+
+[node name="Block" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_oakyr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_ewlph")

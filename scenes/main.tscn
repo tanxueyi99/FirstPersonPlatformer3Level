@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjjjxcban43jb"]
+
+[ext_resource type="PackedScene" uid="uid://b767hrxd2mlhq" path="res://scenes/world1.tscn" id="1_8j0p6"]
+[ext_resource type="Script" path="res://scripts/scene_manager.gd" id="1_se3kk"]
+[ext_resource type="PackedScene" uid="uid://c2ea37y1oeehj" path="res://scenes/pause_menu.tscn" id="3_jdvrv"]
+
+[node name="scenemanager" type="Node3D"]
+script = ExtResource("1_se3kk")
+
+[node name="current_scene" type="Node3D" parent="."]
+
+[node name="world1" parent="current_scene" instance=ExtResource("1_8j0p6")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_jdvrv")]
+visible = false

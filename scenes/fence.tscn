@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpqb7qetsl0eu"]
+
+[ext_resource type="ArrayMesh" uid="uid://p11lh1032hg1" path="res://kenney_platformer-kit/Models/OBJ format/fence.obj" id="1_82b68"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lxbl0"]
+points = PackedVector3Array(0.44998, 0.4, 0.449996, 0.5, 0.35, 0.47, 0.44998, 0.4, 0.35, -0.450078, 0.4, 0.449996, 0.5, 0.1, 0.47, 0.5, 0.35, 0.449996, -0.5, 0.35, 0.47, 0.44998, 0, 0.35, -0.450078, 0.4, 0.35, 0.44998, 0, 0.449996, 0.5, 0.1, 0.449996, -0.5, 0.1, 0.47, -0.5, 0.35, 0.449996, -0.450078, 0, 0.35, -0.450078, 0, 0.449996, -0.5, 0.1, 0.449996)
+
+[node name="Fence" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_82b68")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_lxbl0")

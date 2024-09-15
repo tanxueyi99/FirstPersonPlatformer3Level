@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://blmubuolo4lmj"]
+
+[ext_resource type="Script" path="res://scripts/gate.gd" id="1_hbd20"]
+[ext_resource type="ArrayMesh" uid="uid://brc4cvwi4bcoh" path="res://kenney_platformer-kit/Models/OBJ format/doorLargeOpen.obj" id="1_vc5l7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2hk0h"]
+size = Vector3(0.588745, 2.29291, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ofvw"]
+size = Vector3(1, 0.640625, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iafum"]
+size = Vector3(1.43066, 1.54346, 0.452393)
+
+[node name="Gate" type="StaticBody3D"]
+script = ExtResource("1_hbd20")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = ExtResource("1_vc5l7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19793, 1.1503, 0)
+shape = SubResource("BoxShape3D_2hk0h")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20365, 1.1503, 0)
+shape = SubResource("BoxShape3D_2hk0h")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.65534, 0)
+shape = SubResource("BoxShape3D_5ofvw")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00439453, 1.12976, 0.0186768)
+shape = SubResource("BoxShape3D_iafum")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,0 +1,148 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8mfng67jl0eg"]
+
+[ext_resource type="Texture2D" uid="uid://bierjgs0qt4fd" path="res://scenes/two-coins.svg" id="1_2w3n7"]
+[ext_resource type="Script" path="res://scripts/UI.gd" id="1_d336f"]
+[ext_resource type="FontFile" uid="uid://dnb11iyuxqcbi" path="res://scenes/ADLaM_Display/ADLaMDisplay-Regular.ttf" id="2_j40gf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vt3kt"]
+bg_color = Color(0.768627, 0.435294, 0.372549, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_size = 13
+shadow_offset = Vector2(2.08165e-12, 4.29)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i1yjf"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfltl"]
+bg_color = Color(0.768627, 1, 0.372549, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_size = 13
+shadow_offset = Vector2(2.08165e-12, 4.29)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d336f")
+
+[node name="PlayerInfoBox" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 408.0
+offset_bottom = 163.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vt3kt")
+
+[node name="AvatarFrame" type="Panel" parent="PlayerInfoBox"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -54.5
+offset_right = 129.0
+offset_bottom = 54.5
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i1yjf")
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInfoBox/AvatarFrame"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.5
+offset_top = -47.5
+offset_right = 47.5
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CoinBox" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -287.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 108.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jfltl")
+
+[node name="TextureRect" type="TextureRect" parent="CoinBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = -33.0
+offset_right = -44.5
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2w3n7")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CoinBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_j40gf")
+theme_override_font_sizes/font_size = 28
+text = "Coins:"
+vertical_alignment = 1
+
+[node name="CoinAmountLabel" type="Label" parent="CoinBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 45.5
+offset_top = -19.0
+offset_right = 126.5
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_j40gf")
+theme_override_font_sizes/font_size = 28
+text = "0"
+vertical_alignment = 1

@@ -1,0 +1,151 @@
+[gd_scene load_steps=11 format=3 uid="uid://c3ls7esx5osqb"]
+
+[ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_ig203"]
+[ext_resource type="StyleBox" uid="uid://cosurp0r4o867" path="res://styles/blue_bg_panel.tres" id="2_3vgeg"]
+[ext_resource type="Theme" uid="uid://6jnq57qk7v1" path="res://styles/main_menu_button_theme.tres" id="2_xbtcm"]
+
+[sub_resource type="SystemFont" id="SystemFont_yk2ju"]
+font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_opabn"]
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_qks7u"]
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_q8i3p"]
+subpixel_positioning = 0
+
+[sub_resource type="Animation" id="Animation_0t8at"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jblmn"]
+resource_name = "play_fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_irdgt"]
+_data = {
+"RESET": SubResource("Animation_0t8at"),
+"play_fade_out": SubResource("Animation_jblmn")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ig203")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_3vgeg")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="vBoxContainer1" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 160
+
+[node name="Seperator" type="Control" parent="Panel/MarginContainer/vBoxContainer1"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/vBoxContainer1"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 8
+theme_override_fonts/font = SubResource("SystemFont_yk2ju")
+theme_override_font_sizes/font_size = 100
+text = "Platformer 3L"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Play" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_xbtcm")
+theme_override_fonts/font = SubResource("SystemFont_opabn")
+theme_override_font_sizes/font_size = 60
+text = "Play"
+
+[node name="Option" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_xbtcm")
+theme_override_fonts/font = SubResource("SystemFont_qks7u")
+theme_override_font_sizes/font_size = 60
+text = "  Option  "
+
+[node name="Quit" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_xbtcm")
+theme_override_fonts/font = SubResource("SystemFont_q8i3p")
+theme_override_font_sizes/font_size = 60
+text = "Quit"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_irdgt")
+}
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="animation_finished" from="ColorRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
